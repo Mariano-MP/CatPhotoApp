@@ -7,14 +7,17 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.mexiti.catphotoapp.R
 import com.mexiti.catphotoapp.ui.screens.HomeScreen
+import com.mexiti.catphotoapp.viewmodel.CatViewModel
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -27,7 +30,8 @@ fun CatApp(){
     ) {
         Surface(
             modifier = Modifier.fillMaxSize()) {
-            HomeScreen(catUiState = stringResource(id = R.string.placeholder_result), contentPadding = it)
+            val catViewModel:CatViewModel = viewModel()
+            HomeScreen(catUiState = catViewModel.catUiState, contentPadding = it)
 
         }
 
